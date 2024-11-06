@@ -38,7 +38,8 @@ receiver_INC_FLAGS := $(util_INC_FLAGS) $(addprefix -I,$(receiver_INC_DIRS))
 
 # The -MMD and -MP flags together generate Makefiles for us!
 # These files will have .d instead of .o as the output.
-CPPFLAGS := -g -MMD -MP -std=c++20 -Wall -Wreturn-type
+CPPFLAGS := -g -MMD -MP -std=c++20 -Wall -Wreturn-type -I/opt/homebrew/include
+LDFLAGS := -L/opt/homebrew/lib -lsrt
 CXX := g++
 
 all: sender receiver
