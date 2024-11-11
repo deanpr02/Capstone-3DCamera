@@ -33,7 +33,7 @@
 *.exe
 *.out
 *.app
-bin/*
+cpp/bin/*
 
 # MacOS files
 .DS_Store
