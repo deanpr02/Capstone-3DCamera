@@ -19,7 +19,7 @@ util_SRCS := $(shell find $(util_DIR)/$(SRC_DIR) -name '*.cpp')
 # Replace SRC_DIR with OBJ_DIR and append .o
 sender_OBJS := $(patsubst $(sender_DIR)/$(SRC_DIR)/%.cpp, $(sender_DIR)/$(OBJ_DIR)/%.cpp.o, $(sender_SRCS))
 receiver_OBJS := $(patsubst $(receiver_DIR)/$(SRC_DIR)/%.cpp, $(receiver_DIR)/$(OBJ_DIR)/%.cpp.o, $(receiver_SRCS))
-util_OBJS := $(patsu bst $(util_DIR)/$(SRC_DIR)/%.cpp, $(util_DIR)/$(OBJ_DIR)/%.cpp.o, $(util_SRCS))
+util_OBJS := $(patsubst $(util_DIR)/$(SRC_DIR)/%.cpp, $(util_DIR)/$(OBJ_DIR)/%.cpp.o, $(util_SRCS))
 
 # String substitution (suffix version without %).
 # As an example, ./build/hello.cpp.o turns into ./build/hello.cpp.d
