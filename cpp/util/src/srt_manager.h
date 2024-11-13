@@ -11,6 +11,7 @@ public:
     // functions
     int create_socket();
     int connect();
+    int listen();
     void send_data();
 
 
