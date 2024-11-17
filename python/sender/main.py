@@ -17,9 +17,8 @@ elif os_name == 'Windows':
 
 
 output_url = "srt://127.0.0.1:5050?pkt_size=1316&mode=caller"
-
 (ffmpeg
- .input(input_device, format='avfoundation', framerate=30)
+ .input(input_device, format='avfoundation', framerate=30, video_size=[1280,720])
  .output(output_url, format='mpegts', preset='veryfast', vcodec='libx264')
  .run()
 )

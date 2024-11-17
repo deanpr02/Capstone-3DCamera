@@ -9,7 +9,7 @@ srt_url = 'srt://127.0.0.1:5050?mode=listener&pkt_size=1316&latency=2000'
 stream = ffmpeg.input(srt_url, f='mpegts', flags='low_delay', fflags='nobuffer')
 
 # Output configuration (e.g., store as raw frames or process further)
-output = ffmpeg.output(stream, 'pipe:', format='rawvideo', pix_fmt='rgb24', vf='scale')
+output = ffmpeg.output(stream, 'pipe:', format='rawvideo', pix_fmt='uyvy422')
 
 # Run the command and capture the output frames for further processing
 process = ffmpeg.run_async(output, pipe_stdout=True)
@@ -21,18 +21,21 @@ frame_height = 720
 
 while True:
     # Read raw frame data from FFmpeg process stdout
-    in_bytes = process.stdout.read(frame_width * frame_height * 3)  # RGB24 format
+    in_bytes = process.stdout.read(frame_width * frame_height * 2)  # RGB24 format
 
     if not in_bytes:
         break
 
     # Convert raw bytes into a NumPy array and reshape it into an image frame
-    frame = np.frombuffer(in_bytes, np.uint8).reshape([frame_height, frame_width, 3])
+    frame = np.frombuffer(in_bytes, np.uint8).reshape([frame_height, frame_width, 2])
+
+    # Convert UYVY422 frame to BGR format using OpenCV
+    bgr_frame = cv2.cvtColor(frame, cv2.COLOR_YUV2BGR_UYVY)
 
     # Invert colors
     #frame = cv2.bitwise_not(frame)
 
-    cv2.imshow('SRT Stream', frame)
+    cv2.imshow('SRT Stream', bgr_frame)
 
     # Break on key press (e.g., ESC)
     if cv2.waitKey(1) & 0xFF == 27:
