@@ -3,7 +3,7 @@ import numpy as np
 import cv2
 
 # Define the SRT stream URL (replace with actual IP and port)
-srt_url = 'srt://127.0.0.1:5051?mode=listener&pkt_size=1316&latency=2000'
+srt_url = 'srt://192.168.0.214:5051?mode=listener&pkt_size=1316&latency=2000'
 
 # Set up FFmpeg input to capture the SRT stream
 stream = ffmpeg.input(srt_url, f='mpegts', flags='low_delay', fflags='nobuffer')
