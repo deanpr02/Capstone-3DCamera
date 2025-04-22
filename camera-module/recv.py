@@ -1,7 +1,6 @@
 import asyncio
 import socketio
 from aiortc import RTCPeerConnection, VideoStreamTrack, RTCSessionDescription, RTCIceCandidate
-from av import VideoFrame
 import numpy as np
 
 class FrameReceiver(VideoStreamTrack):
