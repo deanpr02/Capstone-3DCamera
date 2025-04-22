@@ -29,7 +29,7 @@ export default function VideoReceiver() {
       ],
     };
 
-    const ALLOWED_USERNAME = 'camera-module'
+    const ALLOWED_USERNAME = 'server'
   
     // Initialize socket connection
     useEffect(() => {

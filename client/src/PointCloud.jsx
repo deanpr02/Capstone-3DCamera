@@ -215,7 +215,7 @@ function CloudCanvas({ pixelDataRef, depthDataRef, width, height, depthWidth, de
     const pixelData = pixelDataRef.current;
     const depthData = depthDataRef.current;
     
-    const zScale = 0.5;
+    const zScale = 1.0;
     
     // Use a sampling approach to update only a subset of points each frame
     const samplingRate = updateFullGeometry ? 1 : 1; // Update every 10th pixel normally
@@ -264,7 +264,7 @@ function CloudCanvas({ pixelDataRef, depthDataRef, width, height, depthWidth, de
     <Points ref={pointsRef} positions={positions} colors={colors}>
       <pointsMaterial
         vertexColors
-        size={0.01}
+        size={0.2}
         sizeAttenuation={false}
         transparent
         opacity={1.0}
