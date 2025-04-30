@@ -424,7 +424,7 @@ async def main():
 
     try:
         await sio.connect(
-            'https://34.45.98.302:8181/',
+            'https://192.168.0.151:8181/',
             auth={'userName': 'server', 'password': 'x'},
             transports=['websocket']
         )
